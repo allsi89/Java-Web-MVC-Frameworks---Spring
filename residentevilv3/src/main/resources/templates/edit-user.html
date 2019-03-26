@@ -20,7 +20,9 @@
 
                 <div class="form-group mt-3">
                     <label for="roleSelect">ROLES</label>
-                    <select class="form-control" id="roleSelect" multiple th:field="*{roles}" th:styleappend="${#fields.hasErrors('roles')} ? 'text-danger'">
+                    <select class="form-control" id="roleSelect" multiple
+                            th:field="*{roles}"
+                            th:styleappend="${#fields.hasErrors('roles')} ? 'text-danger'">
                         <option th:each="role : ${rolesList}"
                                 th:value="${role.id}"
                                 th:text="${role.authority}"></option>

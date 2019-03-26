@@ -19,6 +19,7 @@ public class VirusBindingModel {
   private static final String HOURS_UNTIL_TURN_ERROR = "Value must be min 1 and max 12.";
   private static final String TURN_OVER_RATE_ERROR = "Turnover rate must be between 0 and 100.";
   private static final String CREATOR_ERROR = "Creator must be Corp or corp.";
+  private static final String INVALID_SIZE_ERR = "You must select at least one capital.";
 
   private String id;
   private String name;
@@ -149,6 +150,8 @@ public class VirusBindingModel {
     this.releasedOn = releasedOn;
   }
 
+  @NotNull
+  @Size(min = 1, message = INVALID_SIZE_ERR)
   public List<String> getCapitals() {
     return capitals;
   }

@@ -1,4 +1,5 @@
-    <div class="form-group" th:classappend="${#fields.hasErrors('name')}? 'text-danger'">
+   <html xmlns:th="http://www.thymeleaf.org">
+    <div class="form-group" th:classappend="${#fields.hasErrors('name')}? 'text-danger'" >
         <label for="inputVirusName">Name</label>
         <input type="text" th:field="*{name}" class="form-control" id="inputVirusName">
         <small id="nameHelper" th:each="error : ${#fields.errors('name')}"
@@ -82,11 +83,13 @@
     </div>
     <div class="form-group" th:classappend="${#fields.hasErrors('capitals')}? 'text-danger'">
         <label for="inputVirusCapitals">Affected Capitals</label>
-        <select multiple class="form-control" id="inputVirusCapitals" th:field="*{capitals}">
-            <option th:each="capital : ${capitals}" th:value="${capital.id}" th:text="${capital.name}"></option>
-
+        <select multiple class="form-control" id="inputVirusCapitals" th:field="*{capitals}" >
+            <option id="capitalOption" th:each="capital : ${capitalsList}"
+                    th:value="${capital.id}"
+                    th:text="${capital.name}"></option>
         </select>
-        <small id="capitalHelper" th:each="error : ${#fields.errors('releasedOn')}"
+        <small id="capitalHelper" th:each="error : ${#fields.errors('capitals')}"
                th:text="${error}"></small>
     </div>
     <button id="submitButton"></button>
+   </html>

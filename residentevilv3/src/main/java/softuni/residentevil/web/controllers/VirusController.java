@@ -41,7 +41,7 @@ public class VirusController extends BaseController {
                           @ModelAttribute(name = "bindingModel") VirusBindingModel bindingModel) {
     modelAndView.addObject("bindingModel", bindingModel);
 
-    modelAndView.addObject("capitals", getCapitalsList());
+    modelAndView.addObject("capitalsList", getCapitalsList());
 
     return super.view("add-virus", modelAndView);
   }
@@ -54,7 +54,7 @@ public class VirusController extends BaseController {
     if (bindingResult.hasErrors() || (this.virusService.save(bindingModel) == null)) {
       modelAndView.addObject("bindingModel", bindingModel);
 
-      modelAndView.addObject("capitals", getCapitalsList());
+      modelAndView.addObject("capitalsList", getCapitalsList());
       return super.view("add-virus", modelAndView);
     }
 
@@ -78,7 +78,7 @@ public class VirusController extends BaseController {
 
     modelAndView.addObject("editModel", editModel);
 
-    modelAndView.addObject("capitals", getCapitalsList());
+    modelAndView.addObject("capitalsList", getCapitalsList());
 
     return super.view("edit-virus", modelAndView);
   }
@@ -93,7 +93,7 @@ public class VirusController extends BaseController {
                                   ModelAndView modelAndView){
 
     if (bindingResult.hasErrors() || (virusService.update(editModel) == null)){
-      modelAndView.addObject("capitals", getCapitalsList());
+      modelAndView.addObject("capitalsList", getCapitalsList());
       modelAndView.addObject("editModel", editModel);
       return super.view("edit-virus", modelAndView);
     }
@@ -120,7 +120,7 @@ public class VirusController extends BaseController {
         .collect(Collectors.toList());
 
     modelAndView.addObject("deleteModel", deleteModel);
-    modelAndView.addObject("capitals", capitals);
+    modelAndView.addObject("capitalsList", capitals);
     return super.view("delete-virus", modelAndView);
   }
 
